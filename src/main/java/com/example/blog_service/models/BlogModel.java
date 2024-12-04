@@ -11,7 +11,6 @@ public class BlogModel {
     private BlogCategory blogCategory;
     private String imgLink;
     private boolean isActive;
-    private String postedBy;
     private SocialLinks socialLinks;
 
     public String getTitle() {
@@ -68,14 +67,6 @@ public class BlogModel {
 
     public void setSocialLinks(SocialLinks socialLinks) {
         this.socialLinks = socialLinks;
-    }
-
-    public String getPostedBy() {
-        return postedBy;
-    }
-
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
     }
 
 }

@@ -48,7 +48,7 @@ public class BlogController {
             blog.setTitle(blogRequest.getTitle());
             blog.setDescription(blogRequest.getDescription());
             blog.setAuthor(blogRequest.getPostedBy());
-            blog.setDescription(blogRequest.getImgLink());
+            blog.setImgLink(blogRequest.getImgLink());
             Optional<BlogCategory> cat = blogCategoryService.getBlogCategoryByName(blogRequest.getCategory());
 
             if (cat.isPresent()) {
