@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import com.example.blog_service.services.BlogCategoryService;
 import com.example.blog_service.services.BlogModelServices;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class BlogController {
     @Autowired
     BlogModelServices blogModelServices;
