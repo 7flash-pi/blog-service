@@ -23,7 +23,7 @@ import com.example.blog_service.services.BlogModelServices;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://lawyer-diary.netlify.app"})
 public class BlogController {
     @Autowired
     BlogModelServices blogModelServices;

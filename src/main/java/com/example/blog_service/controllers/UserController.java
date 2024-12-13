@@ -16,7 +16,8 @@ import com.example.blog_service.models.UserModel;
 import com.example.blog_service.services.UserModelService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://lawyer-diary.netlify.app"})
+
 public class UserController {
 
     @Autowired
