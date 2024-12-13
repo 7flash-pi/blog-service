@@ -22,6 +22,9 @@ public class BlogModelServices {
         return blogModelRepository.findAll();
     }
 
+    public BlogModel getBlogById(String blogId){
+        return blogModelRepository.findById(blogId).orElse(null);
+    }
     
     
     
