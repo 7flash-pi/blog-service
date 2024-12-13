@@ -12,6 +12,7 @@ public class BlogModel {
     private String imgLink;
     private boolean isActive;
     private SocialLinks socialLinks;
+    private String id;
 
     public String getTitle() {
         return title;
@@ -67,6 +68,14 @@ public class BlogModel {
 
     public void setSocialLinks(SocialLinks socialLinks) {
         this.socialLinks = socialLinks;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
