@@ -21,5 +21,9 @@ public class UserModelService {
     public UserModel addUser(UserModel user){
         return userModelRepository.save(user);
     }
+
+    public Optional<UserModel> getUserByEmail(String email){
+        return userModelRepository.findByEmail(email);
+    }
     
 }

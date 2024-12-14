@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.blog_service.dto.UserValidate;
 import com.example.blog_service.models.ApiResponse;
 import com.example.blog_service.models.UserModel;
 import com.example.blog_service.services.UserModelService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "https://lawyer-diary.netlify.app"})
+@CrossOrigin(origins = { "http://localhost:3000", "https://lawyer-diary.netlify.app" })
 
 public class UserController {
 
@@ -65,8 +66,34 @@ public class UserController {
         } catch (Exception e) {
             // TODO: handle exception
             return ResponseEntity.badRequest()
-                   .body(new ApiResponse<>(500, "Error while fetching user", null));
+                    .body(new ApiResponse<>(500, "Error while fetching user", null));
         }
+    }
+
+    @PostMapping("/validate-user")
+    public ResponseEntity<ApiResponse<UserModel>> validateUser(@RequestBody UserValidate userValidate) {
+
+        try {
+            Optional<UserModel> user = userModelService.getUserByEmail(userValidate.getEmail());
+            if (user.isPresent()) {
+                if (user.get().getPassword().equals(userValidate.getPassword())) {
+                    return ResponseEntity.ok(new ApiResponse<>(200, "Success", user.get()));
+                } else {
+                    return ResponseEntity.ok(new ApiResponse<>(401, "Inavlid Password", null));
+                }
+
+            } else {
+                ApiResponse<UserModel> response = new ApiResponse<>(404, "User not Avaiable",
+                        null);
+                return ResponseEntity.status(404).body(response);
+            }
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(new ApiResponse<>(500, "Error while fetching user", null));
+
+        }
+
     }
 
 }
